@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA814F68195C1F72008A998C"
-               BuildableName = "temp.app"
+               BuildableName = "chatsound.app"
                BlueprintName = "chatsound"
                ReferencedContainer = "container:chatsound.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA814F89195C1F73008A998C"
-               BuildableName = "tempTests.xctest"
+               BuildableName = "chatsoundTests.xctest"
                BlueprintName = "chatsoundTests"
                ReferencedContainer = "container:chatsound.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA814F68195C1F72008A998C"
-            BuildableName = "temp.app"
+            BuildableName = "chatsound.app"
             BlueprintName = "chatsound"
             ReferencedContainer = "container:chatsound.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA814F68195C1F72008A998C"
-            BuildableName = "temp.app"
+            BuildableName = "chatsound.app"
             BlueprintName = "chatsound"
             ReferencedContainer = "container:chatsound.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA814F68195C1F72008A998C"
-            BuildableName = "temp.app"
+            BuildableName = "chatsound.app"
             BlueprintName = "chatsound"
             ReferencedContainer = "container:chatsound.xcodeproj">
          </BuildableReference>

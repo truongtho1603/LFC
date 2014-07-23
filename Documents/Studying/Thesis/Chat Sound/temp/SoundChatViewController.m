@@ -74,14 +74,13 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == -1) {
-        UITextField * alertTextField = [alertView textFieldAtIndex:0];
-        if ([[alertTextField text] isEqualToString:@"1"]) {
+        if (buttonIndex == 0) {
             isBoy = YES;
             freqGetText = 18080;
             freqStopGetText = 18160;
             freqPadding = 18000;
         }
-        else {
+        else if (buttonIndex == 1) {
             isBoy = NO;
             freqGetText = 18240;
             freqStopGetText = 18320;
@@ -109,13 +108,31 @@
     recorder.listener = self;
     
     // Custom initialization
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Welcome!" message:@"You are boy or girl?" delegate:self cancelButtonTitle:@"Confirm" otherButtonTitles:nil];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Welcome!"
+                                                     message:@"You are boy or girl?"
+                                                    delegate:self
+                                           cancelButtonTitle:@"Boy"
+                                           otherButtonTitles:@"Girl", nil];
     alert.tag = -1;
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    UITextField * alertTextField = [alert textFieldAtIndex:0];
-    alertTextField.keyboardType = UIKeyboardTypeNumberPad;
-    alertTextField.placeholder = @"1 for Boy - Otherwise for Girl";
     [alert show];
+    
+    UIView *myInitView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+    
+    UISwitch *genderSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width - 50) / 2, ([[UIScreen mainScreen] bounds].size.height - 25) / 2, 50, 25)];
+    [genderSwitch addTarget:self action:@selector(genderChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    UILabel *maleLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, ([[UIScreen mainScreen] bounds].size.height - 45) / 2, 50, 50)];
+    maleLabel.text = @"Nam";
+    
+    UILabel *femaleLabel = [[UILabel alloc] initWithFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width + 200) / 2, ([[UIScreen mainScreen] bounds].size.height - 45) / 2, 50, 50)];
+    femaleLabel.text = @"Nữ";
+    
+    [myInitView addSubview:maleLabel];
+    [myInitView addSubview:femaleLabel];
+    [myInitView addSubview:genderSwitch];
+    
+    //[self.view addSubview:myInitView];
+    
     
     // Tho Do
     // My codelines here
@@ -126,9 +143,6 @@
     // Gender label
     [[self genderLabel] setBackgroundColor:[UIColor blueColor]];
     [[self genderLabel] setTextColor:[UIColor redColor]];
-    
-    // Chat input view
-    [[self chatInputView] setBackgroundColor:[UIColor redColor]];
     
     // Message field
     [[self messageField] setPlaceholder:@"Tin nhắn..."];
@@ -148,6 +162,28 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveHomeNotification:) name:@"HomeNotification"
         object:nil];
+}
+
+- (void)genderChanged:(id)sender
+{
+    BOOL genderState = [sender isOn];
+    
+    if (genderState == NO)
+    {
+        isBoy = YES;
+        freqGetText = 18080;
+        freqStopGetText = 18160;
+        freqPadding = 18000;
+    }
+    else
+    {
+        isBoy = NO;
+        freqGetText = 18240;
+        freqStopGetText = 18320;
+        freqPadding = 18120;
+    }
+    [self updateGenderLabel];
+    [self startAudio];
 }
 
 - (void) receiveHomeNotification:(NSNotification *) notification
@@ -188,17 +224,16 @@
 #pragma mark - emoticons
 - (void)emoticonsPressed{
     [self cleanThumbnails:1 to:50];
-    [[self chatInputView] setBackgroundColor:[UIColor lightTextColor]];
     
     if(!isEmoticonsPressed){
         [self chatInputViewPushup];
-        emoticonsView = [[UIView alloc] initWithFrame:CGRectMake(0, 51, 320, 250)];
+        emoticonsView = [[UIView alloc] initWithFrame:CGRectMake(0, 51, 320, 350)];
         [emoticonsView setBackgroundColor:[UIColor lightTextColor]];
         [[self chatInputView] addSubview:emoticonsView];
         
         // Inside Emoticons Scroll View images
         // Inside Emoticons Scroll View
-        [[self insideEmoticonsScrollView] setContentSize:CGSizeMake(320, 250)];
+        [[self insideEmoticonsScrollView] setContentSize:CGSizeMake(320, 350)];
         [[self insideEmoticonsScrollView] setBackgroundColor:[UIColor lightTextColor]];
         // Set offset to top left
         [[self insideEmoticonsScrollView] setContentOffset:CGPointMake(0, 0) animated:YES];
@@ -215,6 +250,7 @@
     }
     else{
         [self chatInputViewReturnToNormal];
+        [self textFieldShouldReturn:self.messageField];
     }
     isEmoticonsPressed = !isEmoticonsPressed;
 }
@@ -258,7 +294,7 @@
                 
                 // inCrease iD for next thumbnails
                 iD++;
-                [[self insideEmoticonsScrollView] setContentSize:CGSizeMake(320, i*100)];
+                [[self insideEmoticonsScrollView] setContentSize:CGSizeMake(320, i*120)];
             }
         }
     }
@@ -445,33 +481,33 @@
     isEmoticonsShowing = YES;
     if([[UIScreen mainScreen] bounds].size.height == 568){
         // Inside Emoticons Scroll View push up
-        [[self insideEmoticonsScrollView] setFrame:CGRectMake(0, 320, 320, 250)];
+        [[self insideEmoticonsScrollView] setFrame:CGRectMake(0, 350, 320, 250)];
         // Chat input view push up
-        [[self chatInputView] setFrame:CGRectMake(0, 272, 320, 51)];
+        [[self chatInputView] setFrame:CGRectMake(0, 310, 320, 51)];
         
         // Emoticons push up
-        [[self emoticons] setFrame:CGRectMake(5, 283, 31, 31)];
+        [[self emoticons] setFrame:CGRectMake(5, 321, 31, 31)];
         
         // Message field push up
-        [[self messageField] setFrame:CGRectMake(46, 282, 220, 30)];
+        [[self messageField] setFrame:CGRectMake(46, 320, 220, 30)];
         
         // Send buttons push up
-        [[self sendButton] setFrame:CGRectMake(274, 282, 46, 30)];
+        [[self sendButton] setFrame:CGRectMake(274, 320, 46, 30)];
     }
     else{
         // Inside Emoticons Scroll View push up
-        [[self insideEmoticonsScrollView] setFrame:CGRectMake(0, 230, 320, 250)];
+        [[self insideEmoticonsScrollView] setFrame:CGRectMake(0, 260, 320, 250)];
         // Chat input view push up
-        [[self chatInputView] setFrame:CGRectMake(0, 182, 320, 51)];
+        [[self chatInputView] setFrame:CGRectMake(0, 222, 320, 51)];
         
         // Emoticons push up
-        [[self emoticons] setFrame:CGRectMake(5, 191, 31, 31)];
+        [[self emoticons] setFrame:CGRectMake(5, 231, 31, 31)];
         
         // Message field push up
-        [[self messageField] setFrame:CGRectMake(46, 192, 220, 30)];
+        [[self messageField] setFrame:CGRectMake(46, 231, 220, 30)];
         
         // Send buttons push up
-        [[self sendButton] setFrame:CGRectMake(274, 192, 46, 30)];
+        [[self sendButton] setFrame:CGRectMake(274, 231, 46, 30)];
     }
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
