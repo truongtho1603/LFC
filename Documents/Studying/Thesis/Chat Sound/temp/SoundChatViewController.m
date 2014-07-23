@@ -282,7 +282,7 @@
     // Emoticons thumbnails
     if (tagId > 0) {
         freqToPlay = [self indexToFreq:tagId];
-        [self playASong:@"Part2" withExtension:@"wav" andLoops:0];
+        //[self playASong:@"Part2" withExtension:@"wav" andLoops:0];
         [self startTimer];
     }
     
@@ -345,7 +345,7 @@
     [[self messageField] setText:@""];
     cursorOfSendingText = 0;
     
-    [self playASong:@"Part2" withExtension:@"wav" andLoops:3];
+    //[self playASong:@"Part2" withExtension:@"wav" andLoops:3];
     [self startTimer];
     
     UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:iChat1_url]];
@@ -528,6 +528,8 @@
 - (void)loadImageByReceivedFrequency:(int)tagId {
     // Switch on
     NSURL *url = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%02d",tagId] withExtension:@"gif"];
+    if (url == nil)
+        return;
     UIImage* image = [UIImage animatedImageWithAnimatedGIFURL:url];
     if (image == nil)
         return;
@@ -771,8 +773,8 @@ OSStatus RenderTone(
                      AudioBufferList 			*ioData)
 
 {
-	// Fixed amplitude is good enough for our purposes
-	const double amplitude = 1;
+    // Fixed amplitude is good enough for our purposes
+    const double amplitude = 2;
     
 	// Get the tone parameters out of the view controller
 	SoundChatViewController *viewController = (__bridge SoundChatViewController *)inRefCon;

@@ -376,7 +376,7 @@ static RIOInterface *sharedInstance = nil;
 {
 	if (sharedInstance == nil) {
 		sharedInstance = [[RIOInterface alloc] init];
-        sharedInstance.MIN_FREQ = 17000;
+        sharedInstance.MIN_FREQ = 17900;
         sharedInstance.MAX_FREQ = 20600;
 	}
 	
