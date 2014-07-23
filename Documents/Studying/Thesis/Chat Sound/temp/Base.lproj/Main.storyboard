@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wC2-5u-MtS">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Sound Chat View Controller - Locate Me-->
+        <scene sceneID="zdu-3z-ghx">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dZV-Cs-S12" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController title="Locate Me" id="4hK-Au-DpA" customClass="SoundChatViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UT5-fj-zLs"/>
+                        <viewControllerLayoutGuide type="bottom" id="bI7-pI-2GJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3qf-sq-yLa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cj7-F5-5m1">
+                                <rect key="frame" x="0.0" y="20" width="320" height="500"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpW-BQ-aSX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T4G-Fc-Aov">
+                                <rect key="frame" x="4" y="528" width="31" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odW-PG-PmD">
+                                <rect key="frame" x="43" y="529" width="220" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="messageFieldTextChanged:" destination="4hK-Au-DpA" eventType="editingChanged" id="obD-fP-GHz"/>
+                                    <action selector="messageFieldTouchedDowm:" destination="4hK-Au-DpA" eventType="touchDown" id="dIb-xi-IDx"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWZ-0Z-3gw">
+                                <rect key="frame" x="271" y="529" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendButtonPressed:" destination="4hK-Au-DpA" eventType="touchUpInside" id="Nw3-OG-JeU"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="3Op-3u-7tx">
+                                <rect key="frame" x="0.0" y="600" width="320" height="247"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BIY-ex-m3e"/>
+                    <connections>
+                        <outlet property="emoticons" destination="T4G-Fc-Aov" id="lDe-XM-vFq"/>
+                        <outlet property="genderLabel" destination="LpW-BQ-aSX" id="FoJ-sG-kAt"/>
+                        <outlet property="insideEmoticonsScrollView" destination="3Op-3u-7tx" id="koT-Ra-JBS"/>
+                        <outlet property="messageField" destination="odW-PG-PmD" id="HXJ-JK-Ibi"/>
+                        <outlet property="scrollView" destination="cj7-F5-5m1" id="MYk-Nu-ZeU"/>
+                        <outlet property="sendButton" destination="bWZ-0Z-3gw" id="nLp-7d-bgG"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="403" y="-65"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hZf-8I-lmv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wC2-5u-MtS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G4R-Ew-cxx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4hK-Au-DpA" kind="relationship" relationship="rootViewController" id="UwG-l6-GQe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nkL-ku-aus" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-123" y="-65"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

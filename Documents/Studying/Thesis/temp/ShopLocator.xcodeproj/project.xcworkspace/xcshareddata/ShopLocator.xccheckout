@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4228BE9F-E1A2-4E1B-A8DE-DEDE5322191A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ShopLocator</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9DE30143-B341-41B4-8EDC-6DB6FC2A7FEF</key>
+		<string>https://github.com/truongtho1603/LFC.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Documents/Studying/Thesis/temp/ShopLocator.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9DE30143-B341-41B4-8EDC-6DB6FC2A7FEF</key>
+		<string>../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/truongtho1603/LFC.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9DE30143-B341-41B4-8EDC-6DB6FC2A7FEF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9DE30143-B341-41B4-8EDC-6DB6FC2A7FEF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LFC</string>
+		</dict>
+	</array>
+</dict>
+</plist>
