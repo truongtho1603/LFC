@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 @class RIOInterface;
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UIAlertViewDelegate>
 {
 	BOOL isListening;
 	RIOInterface *rioRef;
 	float currentFrequency;
+    NSTimer* _timer;
 }
 
 @property(nonatomic, assign) RIOInterface *rioRef;

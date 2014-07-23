@@ -38,11 +38,13 @@
     if (isListening)
     {
 		[self stopListener];
+        [self stopTimer];
         url = [[NSBundle mainBundle] URLForResource:@"locate_me_on" withExtension:@"png"];
 	}
     else
     {
 		[self startListener];
+        [self startTimer];
 		url = [[NSBundle mainBundle] URLForResource:@"locate_me_off" withExtension:@"png"];
 	}
 	
@@ -123,6 +125,49 @@
     
     [self.navigationController pushViewController:tableViewController animated:YES];
     
+}
+
+- (void)startTimer{
+    if (!_timer) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:8.0f
+                                                target:self
+                                                selector:@selector(_timerFired:)
+                                                userInfo:nil
+                                                repeats:YES];
+    }
+}
+
+- (void)stopTimer{
+    if ([_timer isValid]) {
+        [_timer invalidate];
+    }
+    
+    _timer = nil;
+}
+
+- (void)_timerFired:(NSTimer *)timer {
+    NSURL *url = nil;
+    if (isListening)
+    {
+		[self stopListener];
+        url = [[NSBundle mainBundle] URLForResource:@"locate_me_on" withExtension:@"png"];
+	}
+    
+    if (url != nil) {
+        UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+        [_locateButton setImage:image forState:UIControlStateNormal];
+    }
+    
+	isListening = NO;
+    [self stopTimer];
+    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Not Found!" message:@"No Shop Around Here!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    alert.tag = -1;
+    alert.alertViewStyle = UIAlertViewStyleDefault;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 @end
