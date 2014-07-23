@@ -35,6 +35,8 @@
     NSString *sendingText;
     int cursorOfSendingText;
     NSString *receivedText;
+    NSURL *iChat1_url;
+    NSURL *iChat2_url;
     
     // AVAudioPlayer - use to play background music
     AVAudioPlayer* backgroundPlayer;
@@ -65,6 +67,9 @@
     sendingText = @"";
     cursorOfSendingText = 0;
     receivedText = @"";
+    
+    iChat1_url = [[NSBundle mainBundle] URLForResource:@"iChat1" withExtension:@"png"];
+    iChat2_url = [[NSBundle mainBundle] URLForResource:@"iChat2" withExtension:@"png"];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -340,16 +345,19 @@
     [[self messageField] setText:@""];
     cursorOfSendingText = 0;
     
-    [self playASong:@"Part2" withExtension:@"wav" andLoops:2];
+    [self playASong:@"Part2" withExtension:@"wav" andLoops:3];
     [self startTimer];
     
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"iChat1" withExtension:@"png"];
-    UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+    UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:iChat1_url]];
+    if (image == nil) {
+        sendingText = @"";
+        return;
+    }
     float textWidth = [self widthOfString:_sendingText] * 1.6f;
-    textWidth = textWidth > 20 ? textWidth : 20;
+    textWidth = textWidth > 80 ? textWidth : 80;
     image = [ImageUtils scaleImage:image scaledToSize:CGSizeMake(textWidth, image.size.height)];
-    float indent = textWidth / 8.0f > 5 ? textWidth / 8.0f : 5;
-    image = [ImageUtils imageFromText:_sendingText inImage:image atPoint:CGPointMake(indent, 2)];
+    float indent = textWidth / 13.0f > 8 ? textWidth / 13.0f : 8;
+    image = [ImageUtils imageFromText:_sendingText inImage:image atPoint:CGPointMake(indent, 10)];
     
     UIImageView* imageView;
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(310.0f - image.size.width, iCountMessage * yIndex, image.size.width, 20)];
@@ -520,12 +528,15 @@
 - (void)loadImageByReceivedFrequency:(int)tagId {
     // Switch on
     NSURL *url = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%02d",tagId] withExtension:@"gif"];
+    UIImage* image = [UIImage animatedImageWithAnimatedGIFURL:url];
+    if (image == nil)
+        return;
     UIImageView* imageView;
     
     // Add GIF to main scroll view
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, iCountMessage * yIndex, 100, 100)];
     // Add GIF to main scroll view
-    [imageView setImage:[UIImage animatedImageWithAnimatedGIFURL:url]];
+    [imageView setImage:image];
     [[self scrollView] addSubview:imageView];
     iCountMessage++;
     
@@ -639,13 +650,16 @@
 }
 
 - (void)receivedText:(id)object {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"iChat2" withExtension:@"png"];
-    UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+    UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:iChat2_url]];
+    if (image == nil) {
+        receivedText = @"";
+        return;
+    }
     float textWidth = [self widthOfString:receivedText] * 1.6f;
-    textWidth = textWidth > 20 ? textWidth : 20;
+    textWidth = textWidth > 80 ? textWidth : 80;
     image = [ImageUtils scaleImage:image scaledToSize:CGSizeMake(textWidth, image.size.height)];
-    float indent = textWidth / 8.0f > 5 ? textWidth / 8.0f : 5;
-    image = [ImageUtils imageFromText:receivedText inImage:image atPoint:CGPointMake(indent, 2)];
+    float indent = textWidth / 13.0f > 8 ? textWidth / 13.0f : 8;
+    image = [ImageUtils imageFromText:receivedText inImage:image atPoint:CGPointMake(indent, 10)];
     
     UIImageView* imageView;
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, iCountMessage * yIndex, image.size.width, 20)];
@@ -691,7 +705,7 @@
                                                      repeats:YES];
         }
         else {
-            _timer = [NSTimer scheduledTimerWithTimeInterval:0.3f
+            _timer = [NSTimer scheduledTimerWithTimeInterval:0.4f
                                                       target:self
                                                     selector:@selector(_timerFired:)
                                                     userInfo:nil

@@ -7,7 +7,6 @@
         <!--Sound Chat View Controller - Locate Me-->
         <scene sceneID="zdu-3z-ghx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dZV-Cs-S12" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Locate Me" id="4hK-Au-DpA" customClass="SoundChatViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UT5-fj-zLs"/>
@@ -22,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </scrollView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpW-BQ-aSX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,6 +68,7 @@
                         <outlet property="sendButton" destination="bWZ-0Z-3gw" id="nLp-7d-bgG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dZV-Cs-S12" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="403" y="-65"/>
         </scene>

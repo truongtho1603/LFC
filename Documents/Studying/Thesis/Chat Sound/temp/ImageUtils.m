@@ -13,7 +13,7 @@
 + (UIImage*) imageFromText:(NSString*)text inImage:(UIImage*)image atPoint:(CGPoint)point
 {
     
-    UIFont *font = [UIFont boldSystemFontOfSize:12];
+    UIFont *font = [UIFont systemFontOfSize:17];
     // check if UIGraphicsBeginImageContextWithOptions is available (iOS is 4.0+)
     if (UIGraphicsBeginImageContextWithOptions != NULL)
         UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0f);
