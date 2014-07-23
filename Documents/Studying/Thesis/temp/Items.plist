@@ -332,12 +332,12 @@ Khán giả có thể thưởng thức công nghệ chiếu phim 4DX tại phòn
 		<key>3</key>
 		<dict>
 			<key>Thumbnail</key>
-			<string>https://www.cgv.vn/images/logo_center.png</string>
+			<string>http://www.cgv.vn/images/logo_center.png</string>
 		</dict>
 		<key>4</key>
 		<dict>
 			<key>Link</key>
-			<string>https://www.cgv.vn/vn/hvp/</string>
+			<string>http://www.cgv.vn/vn/hvp/</string>
 		</dict>
 	</dict>
 	<key>18900</key>
@@ -375,7 +375,7 @@ Cuộc hôn nhân của hai người kéo dài trong 9 năm, sau đó Capel kế
 		<key>3</key>
 		<dict>
 			<key>Thumbnail</key>
-			<string>https://scontent-b-pao.xx.fbcdn.net/hphotos-xfa1/t1.0-9/384355_356608561089776_9769593_n.jpg</string>
+			<string>http://scontent-b-pao.xx.fbcdn.net/hphotos-xfa1/t1.0-9/384355_356608561089776_9769593_n.jpg</string>
 		</dict>
 		<key>4</key>
 		<dict>
@@ -818,12 +818,12 @@ Tel: (08) 3920 66 88</string>
 		<key>3</key>
 		<dict>
 			<key>Thumbnail</key>
-			<string>https://www.galaxycine.vn/css/v2/img/logo.png</string>
+			<string>http://www.galaxycine.vn/css/v2/img/logo.png</string>
 		</dict>
 		<key>4</key>
 		<dict>
 			<key>Link</key>
-			<string>https://www.galaxycine.vn</string>
+			<string>http://www.galaxycine.vn</string>
 		</dict>
 	</dict>
 </dict>
