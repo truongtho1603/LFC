@@ -708,14 +708,14 @@
     textWidth = textWidth > 80 ? textWidth : 80;
     image = [ImageUtils scaleImage:image scaledToSize:CGSizeMake(textWidth, image.size.height)];
     float indent = textWidth / 13.0f > 8 ? textWidth / 13.0f : 8;
-    image = [ImageUtils imageFromText:receivedText inImage:image atPoint:CGPointMake(indent, 10)];
+    //image = [ImageUtils imageFromText:receivedText inImage:image atPoint:CGPointMake(indent, 10)];
     
     // Tho Do
     UILabel *sms = [[UILabel alloc] initWithFrame:CGRectMake(indent, -10, textWidth, 50)];
     sms.text = receivedText;
     
     UIImageView* imageView;
-    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, iCountMessage * yIndex, image.size.width, 20)];
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, iCountMessage * yIndex, image.size.width, 20 * 1.5)];
     [imageView setImage:image];
     [imageView addSubview:sms];
     [[self scrollView] addSubview:imageView];
