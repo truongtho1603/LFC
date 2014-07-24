@@ -13,15 +13,15 @@
 + (UIImage*) imageFromText:(NSString*)text inImage:(UIImage*)image atPoint:(CGPoint)point
 {
     
-    UIFont *font = [UIFont systemFontOfSize:17];
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:13.0f];
     // check if UIGraphicsBeginImageContextWithOptions is available (iOS is 4.0+)
     if (UIGraphicsBeginImageContextWithOptions != NULL)
         UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0f);
     else
         // iOS is < 4.0
         UIGraphicsBeginImageContext(image.size);
-    [image drawInRect:CGRectMake(0.0f, 0.0f, image.size.width, image.size.height)];
-    CGRect rect = CGRectMake(point.x, point.y, image.size.width, image.size.height);
+    [image drawInRect:CGRectMake(0.0f, -10.0f, image.size.width, image.size.height)];
+    CGRect rect = CGRectMake(point.x, point.y, image.size.width * 10, image.size.height * 10);
     NSDictionary *dictionary = @{ NSFontAttributeName: font,
                                   NSForegroundColorAttributeName: [UIColor blackColor]};
     [text drawInRect:CGRectIntegral(rect) withAttributes:dictionary];

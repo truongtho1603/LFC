@@ -391,13 +391,20 @@
     }
     float textWidth = [self widthOfString:_sendingText] * 1.6f;
     textWidth = textWidth > 80 ? textWidth : 80;
-    image = [ImageUtils scaleImage:image scaledToSize:CGSizeMake(textWidth, image.size.height)];
+    image = [ImageUtils scaleImage:image scaledToSize:CGSizeMake(textWidth, image.size.height * 2)];
+    
+    NSLog(@"%f", image.size.height);
     float indent = textWidth / 13.0f > 8 ? textWidth / 13.0f : 8;
-    image = [ImageUtils imageFromText:_sendingText inImage:image atPoint:CGPointMake(indent, 10)];
+    //image = [ImageUtils imageFromText:_sendingText inImage:image atPoint:CGPointMake(indent, 10)];
+    
+    // Tho Do
+    UILabel *sms = [[UILabel alloc] initWithFrame:CGRectMake(indent, -10, textWidth, 50)];
+    sms.text = _sendingText;
     
     UIImageView* imageView;
-    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(310.0f - image.size.width, iCountMessage * yIndex, image.size.width, 20)];
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(310.0f - image.size.width, iCountMessage * yIndex, image.size.width, 20 * 1.5)];
     [imageView setImage:image];
+    [imageView addSubview:sms];
     [[self scrollView] addSubview:imageView];
     iCountMessage += 0.25;
     
@@ -703,9 +710,14 @@
     float indent = textWidth / 13.0f > 8 ? textWidth / 13.0f : 8;
     image = [ImageUtils imageFromText:receivedText inImage:image atPoint:CGPointMake(indent, 10)];
     
+    // Tho Do
+    UILabel *sms = [[UILabel alloc] initWithFrame:CGRectMake(indent, -10, textWidth, 50)];
+    sms.text = receivedText;
+    
     UIImageView* imageView;
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, iCountMessage * yIndex, image.size.width, 20)];
     [imageView setImage:image];
+    [imageView addSubview:sms];
     [[self scrollView] addSubview:imageView];
     iCountMessage += 0.25;
     
