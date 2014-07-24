@@ -347,7 +347,18 @@
     
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
+    if (isEmoticonsShowing){
+        if([[UIScreen mainScreen] bounds].size.height == 568)
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
+        else
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
+    }
+    else{
+        if([[UIScreen mainScreen] bounds].size.height == 568)
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 480);
+        else
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 400);
+    }
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
     // End switch on
 }
@@ -411,7 +422,18 @@
     
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
+    if (isEmoticonsShowing){
+        if([[UIScreen mainScreen] bounds].size.height == 568)
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
+        else
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
+    }
+    else{
+        if([[UIScreen mainScreen] bounds].size.height == 568)
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 480);
+        else
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 400);
+    }
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
     // End switch on
 }
@@ -508,7 +530,10 @@
     }
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
+    if([[UIScreen mainScreen] bounds].size.height == 568)
+        bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
+    else
+        bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
 }
 
@@ -544,7 +569,10 @@
     }
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
+    if([[UIScreen mainScreen] bounds].size.height == 568)
+        bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 480);
+    else
+        bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 400);
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
 }
 
@@ -570,7 +598,18 @@
     
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 8);
+    if (isEmoticonsShowing){
+        if([[UIScreen mainScreen] bounds].size.height == 568)
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
+        else
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
+    }
+    else{
+        if([[UIScreen mainScreen] bounds].size.height == 568)
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 480);
+        else
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 400);
+    }
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
     // End switch on
 }
@@ -691,7 +730,18 @@
     
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
+    if (isEmoticonsShowing){
+        if([[UIScreen mainScreen] bounds].size.height == 568)
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
+        else
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
+    }
+    else{
+        if([[UIScreen mainScreen] bounds].size.height == 568)
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 480);
+        else
+            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 400);
+    }
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
     // End switch on
     
