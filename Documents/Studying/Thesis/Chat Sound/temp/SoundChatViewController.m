@@ -415,7 +415,7 @@
     [imageView setImage:image];
     [imageView addSubview:sms];
     [[self scrollView] addSubview:imageView];
-    iCountMessage += 0.25;
+    iCountMessage += 0.35;
     
     // Increase content size for more items in scroll view
     [[self scrollView] setContentSize:CGSizeMake(320, 1100 + (iCountMessage-10) * yIndex)];
@@ -723,7 +723,7 @@
     [imageView setImage:image];
     [imageView addSubview:sms];
     [[self scrollView] addSubview:imageView];
-    iCountMessage += 0.25;
+    iCountMessage += 0.35;
     
     // Increase content size for more items in scroll view
     [[self scrollView] setContentSize:CGSizeMake(320, 1100 + (iCountMessage-10) * yIndex)];
