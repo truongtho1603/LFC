@@ -26,6 +26,8 @@
 
 - (IBAction)messageFieldTextChanged:(id)sender;
 - (IBAction)messageFieldTouchedDowm:(id)sender;
+- (IBAction)messageFieldEditingDidBegin:(id)sender;
+
 - (IBAction)sendButtonPressed:(id)sender;
 
 @property(atomic, retain) NSString  *state;

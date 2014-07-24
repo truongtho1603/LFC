@@ -473,6 +473,10 @@
     [self chatInputViewPushup];
 }
 
+- (IBAction)messageFieldEditingDidBegin:(id)sender {
+    [self chatInputViewPushup];
+}
+
 #pragma mark - chat view
 
 // Tho Do

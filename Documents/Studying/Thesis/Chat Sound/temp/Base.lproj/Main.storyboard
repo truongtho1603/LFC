@@ -37,6 +37,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="messageFieldEditingDidBegin:" destination="4hK-Au-DpA" eventType="editingDidBegin" id="XVu-kc-GcX"/>
                                     <action selector="messageFieldTextChanged:" destination="4hK-Au-DpA" eventType="editingChanged" id="obD-fP-GHz"/>
                                     <action selector="messageFieldTouchedDowm:" destination="4hK-Au-DpA" eventType="touchDown" id="dIb-xi-IDx"/>
                                 </connections>
