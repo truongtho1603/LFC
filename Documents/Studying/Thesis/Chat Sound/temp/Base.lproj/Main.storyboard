@@ -17,11 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cj7-F5-5m1">
-                                <rect key="frame" x="0.0" y="44" width="320" height="476"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="3Op-3u-7tx">
+                                <rect key="frame" x="0.0" y="600" width="320" height="247"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </scrollView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpW-BQ-aSX">
-                                <rect key="frame" x="0.0" y="20" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -52,14 +56,11 @@
                                     <action selector="sendButtonPressed:" destination="4hK-Au-DpA" eventType="touchUpInside" id="Nw3-OG-JeU"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="3Op-3u-7tx">
-                                <rect key="frame" x="0.0" y="600" width="320" height="247"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="chatInputView" destination="3Op-3u-7tx" id="rq1-9e-o0A"/>
                         <outlet property="emoticons" destination="T4G-Fc-Aov" id="lDe-XM-vFq"/>
                         <outlet property="genderLabel" destination="LpW-BQ-aSX" id="FoJ-sG-kAt"/>
                         <outlet property="insideEmoticonsScrollView" destination="3Op-3u-7tx" id="koT-Ra-JBS"/>

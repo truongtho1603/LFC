@@ -137,7 +137,9 @@
     // Tho Do
     // My codelines here
     // Scroll view
-    [[self scrollView] setContentSize:CGSizeMake(320, 500)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTouched:)];
+    [[self scrollView] setContentSize:CGSizeMake(320, 480)];
+    [[self scrollView] addGestureRecognizer:tapGesture];
     [[self scrollView] setBackgroundColor:[UIColor lightTextColor]];
     
     // Gender label
@@ -162,6 +164,13 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveHomeNotification:) name:@"HomeNotification"
         object:nil];
+}
+
+- (void)scrollViewTouched:(id)sender
+{
+    [self chatInputViewReturnToNormal];
+    [self textFieldShouldReturn:self.messageField];
+    isEmoticonsPressed = YES;
 }
 
 - (void)genderChanged:(id)sender
@@ -229,7 +238,6 @@
         [self chatInputViewPushup];
         emoticonsView = [[UIView alloc] initWithFrame:CGRectMake(0, 51, 320, 350)];
         [emoticonsView setBackgroundColor:[UIColor lightTextColor]];
-        [[self chatInputView] addSubview:emoticonsView];
         
         // Inside Emoticons Scroll View images
         // Inside Emoticons Scroll View
@@ -254,6 +262,8 @@
     }
     isEmoticonsPressed = !isEmoticonsPressed;
 }
+
+#pragma mark - Thumbnails
 
 // Tho Do
 // cleanThumbnails
@@ -337,18 +347,7 @@
     
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    if (isEmoticonsShowing){
-        if([[UIScreen mainScreen] bounds].size.height == 568)
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
-        else
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
-    }
-    else{
-        if([[UIScreen mainScreen] bounds].size.height == 568)
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 500);
-        else
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 420);
-    }
+    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
     // End switch on
 }
@@ -393,7 +392,6 @@
     textWidth = textWidth > 80 ? textWidth : 80;
     image = [ImageUtils scaleImage:image scaledToSize:CGSizeMake(textWidth, image.size.height * 2)];
     
-    NSLog(@"%f", image.size.height);
     float indent = textWidth / 13.0f > 8 ? textWidth / 13.0f : 8;
     //image = [ImageUtils imageFromText:_sendingText inImage:image atPoint:CGPointMake(indent, 10)];
     
@@ -413,18 +411,7 @@
     
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    if (isEmoticonsShowing){
-        if([[UIScreen mainScreen] bounds].size.height == 568)
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
-        else
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
-    }
-    else{
-        if([[UIScreen mainScreen] bounds].size.height == 568)
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 500);
-        else
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 420);
-    }
+    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
     // End switch on
 }
@@ -472,16 +459,19 @@
 // Message field text changed
 - (IBAction)messageFieldTextChanged:(id)sender {
     // Check input setting here
+    isEmoticonsPressed = YES;
 }
 
 // Tho Do
 // Message field touched
 - (IBAction)messageFieldTouchedDowm:(id)sender {
     [self chatInputViewPushup];
+    isEmoticonsPressed = YES;
 }
 
 - (IBAction)messageFieldEditingDidBegin:(id)sender {
     [self chatInputViewPushup];
+    isEmoticonsPressed = YES;
 }
 
 #pragma mark - chat view
@@ -493,8 +483,6 @@
     if([[UIScreen mainScreen] bounds].size.height == 568){
         // Inside Emoticons Scroll View push up
         [[self insideEmoticonsScrollView] setFrame:CGRectMake(0, 350, 320, 250)];
-        // Chat input view push up
-        [[self chatInputView] setFrame:CGRectMake(0, 310, 320, 51)];
         
         // Emoticons push up
         [[self emoticons] setFrame:CGRectMake(5, 321, 31, 31)];
@@ -508,8 +496,6 @@
     else{
         // Inside Emoticons Scroll View push up
         [[self insideEmoticonsScrollView] setFrame:CGRectMake(0, 260, 320, 250)];
-        // Chat input view push up
-        [[self chatInputView] setFrame:CGRectMake(0, 222, 320, 51)];
         
         // Emoticons push up
         [[self emoticons] setFrame:CGRectMake(5, 231, 31, 31)];
@@ -522,10 +508,7 @@
     }
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    if([[UIScreen mainScreen] bounds].size.height == 568)
-        bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
-    else
-        bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
+    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
 }
 
@@ -536,8 +519,6 @@
     if([[UIScreen mainScreen] bounds].size.height == 568){
         // Inside Emoticons Scroll View return to normal
         [[self insideEmoticonsScrollView] setFrame:CGRectMake(0, 600, 320, 250)];
-        // Chat input view return to normal
-        [[self chatInputView] setFrame:CGRectMake(0, 517, 320, 51)];
         
         // Emoticons return to normal position
         [[self emoticons] setFrame:CGRectMake(5, 528, 31, 31)];
@@ -551,8 +532,6 @@
     else{
         // Inside Emoticons Scroll View return to normal
         [[self insideEmoticonsScrollView] setFrame:CGRectMake(0, 520, 320, 250)];
-        // Chat input view return to normal
-        [[self chatInputView] setFrame:CGRectMake(0, 437, 320, 51)];
         
         // Emoticons return to normal position
         [[self emoticons] setFrame:CGRectMake(5, 446, 31, 31)];
@@ -565,10 +544,7 @@
     }
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    if([[UIScreen mainScreen] bounds].size.height == 568)
-        bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 500);
-    else
-        bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 420);
+    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
 }
 
@@ -594,18 +570,7 @@
     
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    if (isEmoticonsShowing){
-        if([[UIScreen mainScreen] bounds].size.height == 568)
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
-        else
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
-    }
-    else{
-        if([[UIScreen mainScreen] bounds].size.height == 568)
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 500);
-        else
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 420);
-    }
+    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 8);
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
     // End switch on
 }
@@ -726,18 +691,7 @@
     
     // Bounce to bottom item as we adding it to scroll view
     CGPoint bottomOffset;
-    if (isEmoticonsShowing){
-        if([[UIScreen mainScreen] bounds].size.height == 568)
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 260);
-        else
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 180);
-    }
-    else{
-        if([[UIScreen mainScreen] bounds].size.height == 568)
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 500);
-        else
-            bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 420);
-    }
+    bottomOffset = CGPointMake(0, [self scrollView].contentSize.height - 30 * 4);
     [[self scrollView] setContentOffset:bottomOffset animated:YES];
     // End switch on
     
